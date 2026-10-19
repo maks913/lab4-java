@@ -1,5 +1,6 @@
 package ua.edu.nuos.lab4java.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,17 +17,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/lesson")
+@AllArgsConstructor
 public class LessonController {
 
     private final LessonService lessonService;
     private final SubjectService subjectService;
     private final ProfessorService professorService;
-
-    public LessonController(LessonService lessonService, SubjectService subjectService, ProfessorService professorService) {
-        this.lessonService = lessonService;
-        this.subjectService = subjectService;
-        this.professorService = professorService;
-    }
 
     @GetMapping
     public String getLessons(Model model) {
