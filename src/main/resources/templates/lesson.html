@@ -17,6 +17,15 @@
         </button>
     </div>
 
+    <div th:if="${lessonDtoList.isEmpty()}" class="alert alert-info d-flex align-items-center gap-2 shadow-sm">
+
+        <span class="bi bi-info-circle-fill fs-5"></span>
+        <div>
+            <strong>No lessons found.</strong>
+            <div class="small">There are currently no lessons to display.</div>
+        </div>
+    </div>
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
         <div class="col" th:each="lesson: ${lessonDtoList}">
             <div class="card h-100 shadow-sm border-0 position-relative overflow-hidden">
@@ -100,6 +109,7 @@
                            id="timeEvent"
                            class="form-control"
                            th:field="*{timeEvent}"
+                           required
                     />
 
                     <label for="classRoom">Classroom:</label>
@@ -107,6 +117,7 @@
                            id="classRoom"
                            class="form-control"
                            th:field="*{classroom}"
+                           required
                     />
 
                     <label for="quantityStudents">Quantity Students:</label>
@@ -121,12 +132,13 @@
                            id="pairNumber"
                            class="form-control"
                            th:field="*{pairNumber}"
+                           required
                     />
 
                     <label for="professors">Professor:</label>
                     <select id="professors"
                             class="form-select"
-                            th:field="*{professor.id}">
+                            th:field="*{professor.id}" required>
                         <option th:each="professor: ${professorDtoList}"
                                 th:value="${professor.id}"
                                 th:text="${professor.fullName}"/>
@@ -135,7 +147,7 @@
                     <label for="subjects">Subject:</label>
                     <select id="subjects"
                             class="form-select"
-                            th:field="*{subject.id}">
+                            th:field="*{subject.id}" required>
                         <option th:each="subject: ${subjectDtoList}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}"/>
@@ -178,14 +190,14 @@
                     <input type="text"
                            id="timeEventUpdate"
                            class="form-control"
-                           th:field="*{timeEvent}"
+                           th:field="*{timeEvent}" required
                     />
 
                     <label for="classRoomUpdate">Classroom:</label>
                     <input type="text"
                            id="classRoomUpdate"
                            class="form-control"
-                           th:field="*{classroom}"
+                           th:field="*{classroom}" required
                     />
 
                     <label for="quantityStudentsUpdate">Quantity Students:</label>
@@ -199,13 +211,13 @@
                     <input type="number"
                            id="pairNumberUpdate"
                            class="form-control"
-                           th:field="*{pairNumber}"
+                           th:field="*{pairNumber}" required
                     />
 
                     <label for="professorsUpdate">Professor:</label>
                     <select id="professorsUpdate"
                             class="form-select"
-                            th:field="*{professor.id}">
+                            th:field="*{professor.id}" required>
                         <option th:each="professor: ${professorDtoList}"
                                 th:value="${professor.id}"
                                 th:text="${professor.fullName}"/>
@@ -214,7 +226,7 @@
                     <label for="subjectsUpdate">Subject:</label>
                     <select id="subjectsUpdate"
                             class="form-select"
-                            th:field="*{subject.id}">
+                            th:field="*{subject.id}" required>
                         <option th:each="subject: ${subjectDtoList}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}"/>
