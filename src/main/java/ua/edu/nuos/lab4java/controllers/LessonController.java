@@ -39,7 +39,16 @@ public class LessonController {
     }
 
     @PostMapping("/save")
-    public String saveLesson(@ModelAttribute LessonDto lessonDto) {
+    public String createLesson(@ModelAttribute LessonDto lessonDto) {
+        lessonService.saveLesson(lessonDto);
+        return "redirect:/lesson";
+    }
+
+    @PostMapping("/update")
+    public String updateLesson(@ModelAttribute LessonDto lessonDto) {
+        if (lessonDto.getId() == null) {
+            throw new RuntimeException("Lesson ID is null");
+        }
         lessonService.saveLesson(lessonDto);
         return "redirect:/lesson";
     }
